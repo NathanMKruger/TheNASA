@@ -1,9 +1,11 @@
-import pandas as pd
 import random
 
-def main():
-    df = pd.read_csv('Sprint #1 Data Gathering - Sheet1.csv')
-    print(df)
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from tensorflow import keras
+from sklearn.preprocessing import LabelEncoder
+
 
 def parse(name):
     df = pd.read_csv(name)
@@ -38,4 +40,44 @@ def parse(name):
     training_data.columns = ['training_features', 'training_target']
     print(training_data)
 
-#    return [testing_data, training_data]
+    return training_data, testing_data
+
+
+def data_cleaning(training_data, testing_data):
+    training_values = np.array(training_data)
+    testing_values = np.array(testing_data)
+    label_encoder = LabelEncoder()
+    training_encoded = label_encoder.fit_transform(training_values)
+    testing_encoded = label_encoder.fit_transform(testing_values)
+    return training_encoded, testing_encoded
+
+
+def build_model(training_features, training_target):
+    model = tf.keras.Sequential([keras.layers.Dense(units=training_features.shape[1], activation='relu',
+                                                    input_shape=[training_features.shape[1]]),
+                                 keras.layers.Dense(units=64, activation='relu'),
+                                 keras.layers.Dense(units=64, activation='relu'),
+                                 keras.layers.Dense(units=1, activation='softmax')])
+
+    model.compile(optimizer="SDG", loss='mean_squared_error', metrics=['accuracy'])
+
+    model.fit(training_features, training_target.values, epochs=50)
+
+    return model
+
+
+if __name__ == "__main__":
+    input_file = "Sprint #1 Data Gathering - Sheet1.csv"
+
+    training, testing = parse(input_file)
+    training, testing = data_cleaning(training, testing)
+
+    model = build_model(training['training_features'], training['training_target'])
+    output = model.predict(testing['testing_features'])
+
+    print('+++++TESTING+++++')
+    print(testing)
+    print('+++++++++++++++++\n')
+    print('+++++PREDICTED++++++')
+    print(output)
+    print('+++++++++++++++++\n')

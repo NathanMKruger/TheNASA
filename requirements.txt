@@ -1,3 +1,7 @@
+sklearn
+pandas
+numpy
+tensorflow
 Requirements:
 
 Flask
