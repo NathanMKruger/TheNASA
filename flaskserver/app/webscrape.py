@@ -20,6 +20,6 @@ def getSiteTitle(site):
   if site.find("title") is not None:
     siteTitle = site.find("title")
   elif site.find("h1") is not None:
-    siteTitle = link.find("h1")
+    siteTitle = site.find("h1")
  
  return siteTitle
