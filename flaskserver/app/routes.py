@@ -7,6 +7,8 @@ def my_form():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    text = request.form['text']
-    processed_text = text.upper()
-    return processed_text
+	clickbait = "Enter a article!"
+	text = request.form['text']
+	clickbait = text.upper()
+	#return clickbait
+	return render_template('input.html', clickbait=clickbait)
