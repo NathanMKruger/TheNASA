@@ -1,0 +1,13 @@
+p {
+	color: red;
+	text-align: center;
+}
+
+.output {
+	font-size: 300%;
+}
+
+.logo {
+	height: 10%;
+	width: 10%;
+}
