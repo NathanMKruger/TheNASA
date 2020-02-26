@@ -13,9 +13,9 @@ def getSiteTitle(site):
 	siteTitle = ''
 
 	if site.find("title") is not None:
-		siteTitle = site.find("title")
+		siteTitle = soup.title.string
 	elif site.find("h1") is not None:
-		siteTitle = site.find("h1")
+		siteTitle = soup.h1.string
 
 	return siteTitle
 
