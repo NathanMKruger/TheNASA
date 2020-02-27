@@ -1,10 +1,11 @@
-import random
-
-import numpy as np
 import pandas as pd
-import tensorflow as tf
-from tensorflow import keras
+import random
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras import layers
 from sklearn.preprocessing import LabelEncoder
+from keras.models import load_model
 
 
 def parse(name):
@@ -43,26 +44,36 @@ def parse(name):
     return training_data, testing_data
 
 
-def data_cleaning(training_data, testing_data):
-    training_values = np.array(training_data)
-    testing_values = np.array(testing_data)
-    label_encoder = LabelEncoder()
-    training_encoded = label_encoder.fit_transform(training_values)
-    testing_encoded = label_encoder.fit_transform(testing_values)
-    return training_encoded, testing_encoded
+def build_model(training, testing):
+    tokenizer = Tokenizer(num_words=500)
+    tokenizer.fit_on_texts(training['training_features'])
 
+    X_train = tokenizer.texts_to_sequences(training['training_features'])
 
-def build_model(training_features, training_target):
-    model = tf.keras.Sequential([keras.layers.Dense(units=training_features.shape[1], activation='relu',
-                                                    input_shape=[training_features.shape[1]]),
-                                 keras.layers.Dense(units=64, activation='relu'),
-                                 keras.layers.Dense(units=64, activation='relu'),
-                                 keras.layers.Dense(units=1, activation='softmax')])
+    vocab_size = len(tokenizer.word_index) + 1
 
-    model.compile(optimizer="SDG", loss='mean_squared_error', metrics=['accuracy'])
+    maxlen = 50
 
-    model.fit(training_features, training_target.values, epochs=50)
+    X_train = pad_sequences(X_train, padding='post', maxlen=maxlen)
 
+    encoder = LabelEncoder()
+    y_train = encoder.fit_transform(training['training_target'])
+
+    embedding_dim = 50
+
+    model = Sequential()
+    model.add(layers.Embedding(input_dim=vocab_size,
+                               output_dim=embedding_dim,
+                               input_length=maxlen))
+    model.add(layers.GlobalAveragePooling1D())
+    model.add(layers.Dense(10, activation='relu'))
+    model.add(layers.Dense(1, activation='sigmoid'))
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+    model.fit(X_train, y_train,
+                          epochs=50, verbose=True,
+                          batch_size=10)
+    model.summary()
     return model
 
 
@@ -70,14 +81,14 @@ if __name__ == "__main__":
     input_file = "Sprint #1 Data Gathering - Sheet1.csv"
 
     training, testing = parse(input_file)
-    training, testing = data_cleaning(training, testing)
-
-    model = build_model(training['training_features'], training['training_target'])
-    output = model.predict(testing['testing_features'])
-
-    print('+++++TESTING+++++')
-    print(testing)
-    print('+++++++++++++++++\n')
-    print('+++++PREDICTED++++++')
-    print(output)
-    print('+++++++++++++++++\n')
+    model = build_model(training, testing)
+    model.save('predictor.h5', True, True)
+    
+    #TO LOAD MODEL model = load_model('predictor.h5')
+    
+    #To predict 
+    #tokenizer = Tokenizer(num_words=500)
+    #tokenizer.fit_on_texts(input String)
+    #input = tokenizer.texts_to_sequences(input String)
+    #intput = pad_sequences(input, padding='post', maxlen=50)
+    #model.predict(input)
