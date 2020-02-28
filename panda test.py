@@ -52,14 +52,14 @@ def build_model(training, testing):
 
     vocab_size = len(tokenizer.word_index) + 1
 
-    maxlen = 50
+    maxlen = 12
 
     X_train = pad_sequences(X_train, padding='post', maxlen=maxlen)
 
     encoder = LabelEncoder()
     y_train = encoder.fit_transform(training['training_target'])
 
-    embedding_dim = 50
+    embedding_dim = 12
 
     model = Sequential()
     model.add(layers.Embedding(input_dim=vocab_size,
