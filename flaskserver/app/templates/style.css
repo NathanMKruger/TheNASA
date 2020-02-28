@@ -3,6 +3,18 @@ p {
 	text-align: center;
 }
 
+.header {
+	font-size: 500%;
+	color: darkblue;
+	vertical-align: middle;
+}
+
+.subtitle {
+	font-size: 60%;
+	color: darkblue;
+	text-align: center;
+}
+
 .output {
 	font-size: 300%;
 }
@@ -10,4 +22,11 @@ p {
 .logo {
 	height: 10%;
 	width: 10%;
+	vertical-align: middle;
+}
+
+.line {
+	width: 100%;
+	background: #44f;
+	height: 20px;
 }
