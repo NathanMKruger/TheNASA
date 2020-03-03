@@ -129,7 +129,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def displayDetector(self, q):
             if not q or q.text() == "Clickbait Detector":
-                self.dialog.setupUi()
+                self.dialog.setupUi(self)
                 self.dialog.show()
             elif q.text() == "Records":
                 self.records.setupUi()
