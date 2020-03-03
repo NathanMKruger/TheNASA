@@ -9,6 +9,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from detectorUI import Ui_DetectorWindow
+from lastTen import Ui_TenWindow
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
@@ -108,15 +109,14 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         
         self.setMenuBar(self.menubar)
         
-        self.actionHome = QtWidgets.QAction(self)
-        self.actionHome.setObjectName("actionHome")
-        
         self.actionClickbait_Detector = QtWidgets.QAction(self)
         self.actionClickbait_Detector.setObjectName("actionClickbait_Detector")
-        
-        self.menuFile.addAction(self.actionHome)
-        self.menuFile.addSeparator()
+
+        self.actionRecord = QtWidgets.QAction(self)
+        self.actionRecord.setObjectName("actionRecord")
+
         self.menuFile.addAction(self.actionClickbait_Detector)
+        self.menuFile.addAction(self.actionRecord)
         self.menuFile.triggered[QtWidgets.QAction].connect(self.displayDetector)
         
         self.menubar.addAction(self.menuFile.menuAction())
@@ -125,10 +125,15 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(self)
 
         self.dialog = Ui_DetectorWindow()
+        self.records = Ui_TenWindow()
 
-    def displayDetector(self, q = None):
-        self.dialog.setupUi()
-        self.dialog.show()
+    def displayDetector(self, q):
+            if not q or q.text() == "Clickbait Detector":
+                self.dialog.setupUi()
+                self.dialog.show()
+            elif q.text() == "Records":
+                self.records.setupUi()
+                self.records.show()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -140,7 +145,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.btnEmpty_2.setText(_translate("MainWindow", "Coming Soon"))
         self.btnEmpty_3.setText(_translate("MainWindow", "Coming Soon"))
         self.menuFile.setTitle(_translate("MainWindow", "Pages"))
-        self.actionHome.setText(_translate("MainWindow", "Home"))
+        self.actionRecord.setText(_translate("MainWindow", "Records"))
         self.actionClickbait_Detector.setText(_translate("MainWindow", "Clickbait Detector"))
 
 

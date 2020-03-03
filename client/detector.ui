@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>300</height>
+    <height>280</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>300</width>
-    <height>300</height>
+    <height>280</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>300</width>
-    <height>300</height>
+    <height>280</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -195,25 +195,6 @@
      <string>Submit Correction</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>300</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>Pages</string>
-    </property>
-    <addaction name="actionHome"/>
-    <addaction name="separator"/>
-    <addaction name="menuDetector"/>
-   </widget>
-   <addaction name="menuFile"/>
   </widget>
   <action name="actionHome">
    <property name="text">
