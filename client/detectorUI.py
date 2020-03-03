@@ -50,6 +50,8 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(70, 120, 161, 23))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.displayName)
+		
         self.line_3 = QtWidgets.QFrame(self.centralwidget)
         self.line_3.setGeometry(QtCore.QRect(20, 150, 261, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
@@ -78,6 +80,11 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
 
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
+
+    def displayName(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.label_3.setText(_translate("MainWindow", self.lineEdit.text()))
+        self.lineEdit.clear()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
