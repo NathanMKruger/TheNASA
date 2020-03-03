@@ -91,4 +91,4 @@ if __name__ == "__main__":
     #tokenizer.fit_on_texts(input String)
     #input = tokenizer.texts_to_sequences(input String)
     #intput = pad_sequences(input, padding='post', maxlen=50)
-    #model.predict(input)
+    #prediction = model.predict(input)

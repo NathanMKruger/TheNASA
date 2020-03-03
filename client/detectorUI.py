@@ -11,7 +11,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_DetectorWindow(QtWidgets.QMainWindow):
-    def setupUi(self):
+    def setupUi(self, rootUI):
+        self.root = rootUI
         self.setObjectName("MainWindow")
         self.resize(300, 300)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -85,6 +86,8 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         self.label_3.setText(_translate("MainWindow", self.lineEdit.text()))
         self.lineEdit.clear()
+        if self.root is not None:
+            print("M")
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -102,6 +105,6 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     ui = Ui_DetectorWindow()
-    ui.setupUi()
+    ui.setupUi(None)
     ui.show()
     sys.exit(app.exec_())
