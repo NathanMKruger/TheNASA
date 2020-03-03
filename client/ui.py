@@ -38,10 +38,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.centralwidget.setObjectName("centralwidget")
         
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(70, -10, 441, 91))
+        self.label.setGeometry(QtCore.QRect(40, -10, 491, 91))
         
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
         
