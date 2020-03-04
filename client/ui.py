@@ -143,7 +143,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             del self.internalData[-1]
         self.internalData.insert(0, [text, val >= 0.5, math.trunc(val * 10000) / 100])
         print(self.internalData)
-        #self.records.updateView()
+        self.records.updateView()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate

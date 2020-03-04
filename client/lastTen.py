@@ -11,7 +11,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_TenWindow(QtWidgets.QMainWindow):
-    def setupUi(self):
+    def setupUi(self, rootUI):
+        self.root = rootUI
         self.setObjectName("MainWindow")
         self.resize(570, 280)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -128,6 +129,9 @@ class Ui_TenWindow(QtWidgets.QMainWindow):
         self.actionHome.setText(_translate("MainWindow", "Home"))
         self.menuDetector.setText(_translate("MainWindow", "Clickbait Detector"))
 
+    def updateView(self):
+        if self.root is not None:
+            
 
 if __name__ == "__main__":
     import sys
