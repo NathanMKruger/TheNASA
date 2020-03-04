@@ -8,6 +8,12 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import numpy
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import load_model
+from keras.models import Sequential
+import math
 
 
 class Ui_DetectorWindow(QtWidgets.QMainWindow):
@@ -84,11 +90,19 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
 
     def displayName(self):
         _translate = QtCore.QCoreApplication.translate
-        if self.lineEdit.text() != "":
-            self.label_name.setText(_translate("MainWindow", self.lineEdit.text()))
+        inText = self.lineEdit.text()
+        if inText != "":
+            self.label_name.setText(_translate("MainWindow", inText))
             self.lineEdit.clear()
+            data = self.runPredict(inText)
+            if data >= 0.5:
+                output = "is CLICKBAIT"
+            else:
+                output = "is NOT CLICKBAIT"
+            readableData = math.trunc(data * 10000) / 100
+            self.label_result.setText(output + " (" + str(readableData) + "%)")
             if self.root is not None:
-                print("M")
+                self.root.logData(inText, data)
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -100,6 +114,17 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
         self.label_result.setText(_translate("MainWindow", "is {CLICKBAIT/NOT CLICKBAIT (%)}"))
         self.label_correctionPrompt.setText(_translate("MainWindow", "Is this wrong?"))
         self.btn_correction.setText(_translate("MainWindow", "Submit Correction"))
+
+    def runPredict(self, tex):
+        model = load_model('../predictor.h5')
+        tokenizer = Tokenizer(num_words=500)
+        tokenizer.fit_on_texts(tex)
+        input = tokenizer.texts_to_sequences(tex)
+        input = pad_sequences(input, padding='post', maxlen=50)
+        prediction = model.predict(input)
+        val = numpy.sum(prediction[0])
+        print(prediction)
+        return val/len(prediction[0])
 
 
 if __name__ == "__main__":

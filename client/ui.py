@@ -10,6 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from detectorUI import Ui_DetectorWindow
 from lastTen import Ui_TenWindow
+import math
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
@@ -127,6 +128,8 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.dialog = Ui_DetectorWindow()
         self.records = Ui_TenWindow()
 
+        self.internalData = []
+
     def displayDetector(self, q):
             if not q or q.text() == "Clickbait Detector":
                 self.dialog.setupUi(self)
@@ -134,6 +137,13 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             elif q.text() == "Records":
                 self.records.setupUi()
                 self.records.show()
+
+    def logData(self, text, val):
+        if len(self.internalData) > 10:
+            del self.internalData[-1]
+        self.internalData.insert(0, [text, val >= 0.5, math.trunc(val * 10000) / 100])
+        print(self.internalData)
+        #self.records.updateView()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
