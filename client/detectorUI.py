@@ -84,10 +84,11 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
 
     def displayName(self):
         _translate = QtCore.QCoreApplication.translate
-        self.label_name.setText(_translate("MainWindow", self.lineEdit.text()))
-        self.lineEdit.clear()
-        if self.root is not None:
-            print("M")
+        if self.lineEdit.text() != "":
+            self.label_name.setText(_translate("MainWindow", self.lineEdit.text()))
+            self.lineEdit.clear()
+            if self.root is not None:
+                print("M")
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
