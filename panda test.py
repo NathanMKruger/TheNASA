@@ -52,14 +52,14 @@ def build_model(training, testing):
 
     vocab_size = len(tokenizer.word_index) + 1
 
-    maxlen = 12
+    maxlen = 50
 
     X_train = pad_sequences(X_train, padding='post', maxlen=maxlen)
 
     encoder = LabelEncoder()
     y_train = encoder.fit_transform(training['training_target'])
 
-    embedding_dim = 12
+    embedding_dim = 50
 
     model = Sequential()
     model.add(layers.Embedding(input_dim=vocab_size,
@@ -87,8 +87,10 @@ if __name__ == "__main__":
     #TO LOAD MODEL model = load_model('predictor.h5')
     
     #To predict 
-    #tokenizer = Tokenizer(num_words=500)
-    #tokenizer.fit_on_texts(input String)
-    #input = tokenizer.texts_to_sequences(input String)
-    #intput = pad_sequences(input, padding='post', maxlen=50)
-    #prediction = model.predict(input)
+    tokenizer = Tokenizer(num_words=500)
+    tokenizer.fit_on_texts("surprise")
+    input = tokenizer.texts_to_sequences("surprise")
+    input = pad_sequences(input, padding='post', maxlen=50)
+    prediction = model.predict(input)
+    print(prediction)
+    
