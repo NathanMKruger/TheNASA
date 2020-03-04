@@ -37,17 +37,17 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.centralwidget.setSizePolicy(sizePolicy)
         self.centralwidget.setObjectName("centralwidget")
         
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(40, -10, 491, 91))
+        self.label_title = QtWidgets.QLabel(self.centralwidget)
+        self.label_title.setGeometry(QtCore.QRect(40, -10, 491, 91))
         
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
         
-        self.label.setFont(font)
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
+        self.label_title.setFont(font)
+        self.label_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_title.setObjectName("label")
         
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setGeometry(QtCore.QRect(0, 70, 801, 20))
@@ -62,15 +62,15 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(220, 80, 161, 51))
+        self.label_projectHeader = QtWidgets.QLabel(self.centralwidget)
+        self.label_projectHeader.setGeometry(QtCore.QRect(220, 80, 161, 51))
         
         font = QtGui.QFont()
         font.setPointSize(14)
         
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
+        self.label_projectHeader.setFont(font)
+        self.label_projectHeader.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_projectHeader.setObjectName("label_projectHeader")
         
         self.btnDetector = QtWidgets.QPushButton(self.centralwidget)
         self.btnDetector.setGeometry(QtCore.QRect(190, 140, 221, 23))
@@ -138,8 +138,8 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "The National Agile and Scrum Association"))
-        self.label_2.setText(_translate("MainWindow", "Our Projects"))
+        self.label_title.setText(_translate("MainWindow", "The National Agile and Scrum Association"))
+        self.label_projectHeader.setText(_translate("MainWindow", "Our Projects"))
         self.btnDetector.setText(_translate("MainWindow", "Clickbait Detector"))
         self.btnEmpty_1.setText(_translate("MainWindow", "Coming Soon"))
         self.btnEmpty_2.setText(_translate("MainWindow", "Coming Soon"))
