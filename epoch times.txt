@@ -1,0 +1,150 @@
+Python 3.6.0 (v3.6.0:41df79263a11, Dec 23 2016, 08:06:12) [MSC v.1900 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+============= RESTART: C:\Users\Scott\Dev\TheNASA\panda test.py =============
+Using TensorFlow backend.
+Raw Data
+=====
+                                           Article Title Classification
+0      “A Man Sent His Girlfriend Bags Of Flour After...      Clickbait
+1      “46 Life-Changing Style Tips Every Woman Shoul...      Clickbait
+2      “10 Peanut Butter Recipes That’ll Take You To ...      Clickbait
+3      24 B&W Floral Tattoos That Will Have You In A ...      Clickbait
+4      “A Couple Rode Into Their Wedding Reception On...      Clickbait
+...                                                  ...            ...
+32027  There Was A Mini "Sisterhood Of The Traveling ...      Clickbait
+32028    21 Dogs Who Are Thankful For Their Best Friends      Clickbait
+32029  People Are Proving No Dick Is Too Big By Dropp...      Clickbait
+32030                        I'm An Atheist, But I'm Not      Clickbait
+32031  An Artist Drew Disney Men As Justin Bieber And...      Clickbait
+
+[32032 rows x 2 columns]
+=====
+Printing Testing Data...
+=====
+                                    testing_features testing_target
+0                Albanians, Cut Off, Get Set to Vote           News
+1  Robert Wilson, bassist for The Gap Band dies a...           News
+2                         Canadians may elect Senate           News
+=====
+Testing Data Created. Creating Training Data...
+=====
+                                       training_features training_target
+0      “A Man Sent His Girlfriend Bags Of Flour After...       Clickbait
+1      “46 Life-Changing Style Tips Every Woman Shoul...       Clickbait
+2      “10 Peanut Butter Recipes That’ll Take You To ...       Clickbait
+3      24 B&W Floral Tattoos That Will Have You In A ...       Clickbait
+4      “A Couple Rode Into Their Wedding Reception On...       Clickbait
+...                                                  ...             ...
+32024  There Was A Mini "Sisterhood Of The Traveling ...       Clickbait
+32025    21 Dogs Who Are Thankful For Their Best Friends       Clickbait
+32026  People Are Proving No Dick Is Too Big By Dropp...       Clickbait
+32027                        I'm An Atheist, But I'm Not       Clickbait
+32028  An Artist Drew Disney Men As Justin Bieber And...       Clickbait
+
+[32029 rows x 2 columns]
+
+Warning (from warnings module):
+  File "C:\Users\Scott\AppData\Local\Programs\Python\Python36\lib\site-packages\tensorflow_core\python\framework\indexed_slices.py", line 424
+    "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+Epoch 1/50
+32029/32029 [==============================] - 389s 12ms/step - loss: 0.2897 - accuracy: 0.8839
+Epoch 2/50
+32029/32029 [==============================] - 407s 13ms/step - loss: 0.1400 - accuracy: 0.9474
+Epoch 3/50
+32029/32029 [==============================] - 472s 15ms/step - loss: 0.1299 - accuracy: 0.9506
+Epoch 4/50
+32029/32029 [==============================] - 536s 17ms/step - loss: 0.1261 - accuracy: 0.9528
+Epoch 5/50
+32029/32029 [==============================] - 530s 17ms/step - loss: 0.1247 - accuracy: 0.9534
+Epoch 6/50
+32029/32029 [==============================] - 671s 21ms/step - loss: 0.1246 - accuracy: 0.9536
+Epoch 7/50
+32029/32029 [==============================] - 758s 24ms/step - loss: 0.1224 - accuracy: 0.9544
+Epoch 8/50
+32029/32029 [==============================] - 771s 24ms/step - loss: 0.1230 - accuracy: 0.9535
+Epoch 9/50
+32029/32029 [==============================] - 817s 26ms/step - loss: 0.1207 - accuracy: 0.9539
+Epoch 10/50
+32029/32029 [==============================] - 811s 25ms/step - loss: 0.1225 - accuracy: 0.9525
+Epoch 11/50
+32029/32029 [==============================] - 856s 27ms/step - loss: 0.1206 - accuracy: 0.9545
+Epoch 12/50
+32029/32029 [==============================] - 872s 27ms/step - loss: 0.1214 - accuracy: 0.9539
+Epoch 13/50
+32029/32029 [==============================] - 877s 27ms/step - loss: 0.1199 - accuracy: 0.9544
+Epoch 14/50
+32029/32029 [==============================] - 863s 27ms/step - loss: 0.1196 - accuracy: 0.9549
+Epoch 15/50
+32029/32029 [==============================] - 868s 27ms/step - loss: 0.1189 - accuracy: 0.9548
+Epoch 16/50
+32029/32029 [==============================] - 879s 27ms/step - loss: 0.1188 - accuracy: 0.9557
+Epoch 17/50
+32029/32029 [==============================] - 874s 27ms/step - loss: 0.1182 - accuracy: 0.9544
+Epoch 18/50
+32029/32029 [==============================] - 922s 29ms/step - loss: 0.1182 - accuracy: 0.9554
+Epoch 19/50
+32029/32029 [==============================] - 975s 30ms/step - loss: 0.1178 - accuracy: 0.9547
+Epoch 20/50
+32029/32029 [==============================] - 977s 31ms/step - loss: 0.1176 - accuracy: 0.9548
+Epoch 21/50
+32029/32029 [==============================] - 991s 31ms/step - loss: 0.1180 - accuracy: 0.9550
+Epoch 22/50
+32029/32029 [==============================] - 1008s 31ms/step - loss: 0.1168 - accuracy: 0.9569
+Epoch 23/50
+32029/32029 [==============================] - 1023s 32ms/step - loss: 0.1174 - accuracy: 0.9553
+Epoch 24/50
+32029/32029 [==============================] - 1033s 32ms/step - loss: 0.1170 - accuracy: 0.9554
+Epoch 25/50
+32029/32029 [==============================] - 1033s 32ms/step - loss: 0.1164 - accuracy: 0.9561
+Epoch 26/50
+32029/32029 [==============================] - 1043s 33ms/step - loss: 0.1170 - accuracy: 0.9563
+Epoch 27/50
+32029/32029 [==============================] - 1036s 32ms/step - loss: 0.1161 - accuracy: 0.9563
+Epoch 28/50
+32029/32029 [==============================] - 1012s 32ms/step - loss: 0.1161 - accuracy: 0.9557
+Epoch 29/50
+32029/32029 [==============================] - 1025s 32ms/step - loss: 0.1158 - accuracy: 0.9563
+Epoch 30/50
+32029/32029 [==============================] - 1036s 32ms/step - loss: 0.1151 - accuracy: 0.9566
+Epoch 31/50
+32029/32029 [==============================] - 1056s 33ms/step - loss: 0.1154 - accuracy: 0.9569
+Epoch 32/50
+32029/32029 [==============================] - 1052s 33ms/step - loss: 0.1144 - accuracy: 0.9562
+Epoch 33/50
+32029/32029 [==============================] - 1055s 33ms/step - loss: 0.1124 - accuracy: 0.9573
+Epoch 34/50
+32029/32029 [==============================] - 1080s 34ms/step - loss: 0.1118 - accuracy: 0.9569
+Epoch 35/50
+32029/32029 [==============================] - 1124s 35ms/step - loss: 0.1113 - accuracy: 0.9569
+Epoch 36/50
+32029/32029 [==============================] - 1089s 34ms/step - loss: 0.1109 - accuracy: 0.9565
+Epoch 37/50
+32029/32029 [==============================] - 1110s 35ms/step - loss: 0.1105 - accuracy: 0.9577
+Epoch 38/50
+32029/32029 [==============================] - 1110s 35ms/step - loss: 0.1099 - accuracy: 0.9569
+Epoch 39/50
+32029/32029 [==============================] - 1176s 37ms/step - loss: 0.1088 - accuracy: 0.9570
+Epoch 40/50
+32029/32029 [==============================] - 1168s 36ms/step - loss: 0.1091 - accuracy: 0.9569
+Epoch 41/50
+32029/32029 [==============================] - 1187s 37ms/step - loss: 0.1079 - accuracy: 0.9574
+Epoch 42/50
+32029/32029 [==============================] - 1168s 36ms/step - loss: 0.1077 - accuracy: 0.9579
+Epoch 43/50
+32029/32029 [==============================] - 1177s 37ms/step - loss: 0.1073 - accuracy: 0.9576
+Epoch 44/50
+32029/32029 [==============================] - 1209s 38ms/step - loss: 0.1070 - accuracy: 0.9574
+Epoch 45/50
+32029/32029 [==============================] - 1193s 37ms/step - loss: 0.1062 - accuracy: 0.9580
+Epoch 46/50
+32029/32029 [==============================] - 1226s 38ms/step - loss: 0.1065 - accuracy: 0.9575
+Epoch 47/50
+32029/32029 [==============================] - 1152s 36ms/step - loss: 0.1057 - accuracy: 0.9583
+Epoch 48/50
+32029/32029 [==============================] - 1162s 36ms/step - loss: 0.1058 - accuracy: 0.9586
+Epoch 49/50
+32029/32029 [==============================] - 1199s 37ms/step - loss: 0.1052 - accuracy: 0.9578
+Epoch 50/50
+32029/32029 [==============================] - 1248s 39ms/step - loss: 0.1051 - accuracy: 0.9584
