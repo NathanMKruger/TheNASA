@@ -1,7 +1,10 @@
 Requirements:
 
-sklearn
 pandas
-numpy
-tensorflow
-Flask
+flask
+keras
+PyQt5
+tensorflow 2.0.0
+protobuf 3.6.0
+sklearn
+bs4
