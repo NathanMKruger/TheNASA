@@ -130,12 +130,13 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
         self.internalData = []
 
+        self.records.setupUi(self)
+        self.dialog.setupUi(self)
+
     def displayDetector(self, q):
             if not q or q.text() == "Clickbait Detector":
-                self.dialog.setupUi(self)
                 self.dialog.show()
             elif q.text() == "Records":
-                self.records.setupUi()
                 self.records.show()
 
     def logData(self, text, val):
@@ -143,7 +144,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             del self.internalData[-1]
         self.internalData.insert(0, [text, val >= 0.5, math.trunc(val * 10000) / 100])
         print(self.internalData)
-        self.records.updateView()
+        self.records.updateView(self.internalData)
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate

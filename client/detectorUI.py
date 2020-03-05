@@ -95,7 +95,7 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
             self.label_name.setText(_translate("MainWindow", inText))
             self.lineEdit.clear()
             data = self.runPredict(inText)
-            if data >= 0.5:
+            if data >= 0.8:
                 output = "is CLICKBAIT"
             else:
                 output = "is NOT CLICKBAIT"
@@ -120,7 +120,7 @@ class Ui_DetectorWindow(QtWidgets.QMainWindow):
         tokenizer = Tokenizer(num_words=500)
         tokenizer.fit_on_texts(tex)
         input = tokenizer.texts_to_sequences(tex)
-        input = pad_sequences(input, padding='post', maxlen=50)
+        input = pad_sequences(input, padding='post', maxlen=150)
         prediction = model.predict(input)
         val = numpy.sum(prediction[0])
         print(prediction)

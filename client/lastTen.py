@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QTableWidgetItem
 
 
 class Ui_TenWindow(QtWidgets.QMainWindow):
@@ -129,14 +130,17 @@ class Ui_TenWindow(QtWidgets.QMainWindow):
         self.actionHome.setText(_translate("MainWindow", "Home"))
         self.menuDetector.setText(_translate("MainWindow", "Clickbait Detector"))
 
-    def updateView(self):
-        if self.root is not None:
+    def updateView(self, dataSet):
+        for i in range(0, min(len(dataSet), 10)):
+            for j in range(0, 3): 
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(dataSet[i][j])))
+        print(dataSet)
             
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     ui = Ui_TenWindow()
-    ui.setupUi()
+    ui.setupUi(None)
     ui.show()
     sys.exit(app.exec_())
