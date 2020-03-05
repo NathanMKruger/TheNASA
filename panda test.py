@@ -78,7 +78,7 @@ def build_model(training, testing):
 
 
 if __name__ == "__main__":
-    input_file = "Sprint #1 Data Gathering - Sheet1.csv"
+    input_file = "Sprint #1 Data Gathering - Sheet2.csv"
 
     training, testing = parse(input_file)
     model = build_model(training, testing)
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     tokenizer = Tokenizer(num_words=500)
     tokenizer.fit_on_texts("surprise")
     input = tokenizer.texts_to_sequences("surprise")
-    input = pad_sequences(input, padding='post', maxlen=50)
+    input = pad_sequences(input, padding='post', maxlen=150)
     prediction = model.predict(input)
     print(prediction)
     
