@@ -52,7 +52,7 @@ def build_model(training, testing):
 
     vocab_size = len(tokenizer.word_index) + 1
 
-    maxlen = 50
+    maxlen = 150
 
     X_train = pad_sequences(X_train, padding='post', maxlen=maxlen)
 
