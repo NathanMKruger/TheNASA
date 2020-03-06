@@ -1,0 +1,14 @@
+{
+  "name": "NASA Clickbait",
+  "version": "1.0",
+  "description": "Is this article at risk to be clickbait?",
+  "background": {
+	"scripts": ["background.js"],
+	"persistent": false
+  }, 
+  "page_action": {
+	"default_popup": "popup.html",
+	"chrome_tabs_create": {"url": "http://thenasa.org"}
+  },
+  "manifest_version": 2
+}
