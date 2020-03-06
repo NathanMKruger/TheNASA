@@ -1,11 +1,11 @@
 import time
 from bs4 import BeautifulSoup
-#from keras.preprocessing.text import Tokenizer
-#from keras.preprocessing.sequence import pad_sequences
-#from keras.models import Sequential
-#from keras import layers
-#from sklearn.preprocessing import LabelEncoder
-#from keras.models import load_model
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras import layers
+from sklearn.preprocessing import LabelEncoder
+from keras.models import load_model
 import requests
 from flask import request, Flask
 
@@ -29,14 +29,16 @@ def getSiteTitle(site):
 
 	return siteTitle
 
-#def getPrediction(title):
-#	model = load_model('predictor.h5')
-    #To predict 
-#	tokenizer = Tokenizer(num_words=500)
-#	tokenizer.fit_on_texts(title)
-#	input = tokenizer.texts_to_sequences(title)
-#	intput = pad_sequences(input, padding='post', maxlen=50)
-#	model.predict(input)
+def getPrediction(title):
+	#TO LOAD MODEL 
+	model = load_model('predictor.h5')
+	tokenizer = Tokenizer(num_words=500)
+	tokenizer.fit_on_texts("surprise")
+	input = tokenizer.texts_to_sequences("surprise")
+	input = pad_sequences(input, padding='post', maxlen=150)
+	prediction = model.predict(input)
+	print(prediction)
+	return prediction
 
 
 @app.route('/predict', methods = ['GET', 'POST'])
@@ -44,7 +46,7 @@ def get_url():
 	if request.method == 'GET':
 		url = request.args.get('url', None)
 		if url:
-			return {'title': getSiteTitle(url)}
+			return {'prediction': getPrediction(getSiteTitle(url))}
 		return "No url is given!"
 
 @app.route('/time')
