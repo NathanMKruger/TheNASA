@@ -16,12 +16,12 @@ def parse(name):
     print('=====')
     print(df2)
     #print(df)
-    indices = random.sample(range(1, df2.index.stop - 1), 3)
+    indices = random.sample(range(1, df2.index.stop - 1), 10000)
     indices.sort()
     #print(indices)
     #using 'A','B' as temporary names for easier manipulation
     testing_data = pd.DataFrame(columns = ['A', 'B'])
-    for i in range(0, 3):
+    for i in range(0, 10000):
         testing_data = testing_data.append({'A' : df2.iat[indices[i], 0], 'B' : df2.iat[indices[i], 1]}, ignore_index = True)
     testing_data.columns = ['testing_features', 'testing_target']
     print('=====')
@@ -35,7 +35,7 @@ def parse(name):
     indices.sort(reverse=True)
     training_data = pd.DataFrame(df2)
     training_data.columns = ['A', 'B']
-    for i in range(0,3):
+    for i in range(0,10000):
         training_data = training_data.drop(training_data.index[indices[i]])
     training_data = training_data.reset_index(drop=True)
     training_data.columns = ['training_features', 'training_target']
@@ -71,7 +71,7 @@ def build_model(training, testing):
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     model.fit(X_train, y_train,
-                          epochs=50, verbose=True,
+                          epochs=6, verbose=True,
                           batch_size=10)
     model.summary()
     return model
