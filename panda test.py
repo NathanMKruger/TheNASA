@@ -77,6 +77,14 @@ def build_model(training, testing):
     return model
 
 
+def retrain_model(input, isClickbait, model, training, testing):
+    training['training_features'].append(input)
+    training['training_target'].append(isClickbait)
+    model.build(training, testing)
+    return model
+
+
+
 if __name__ == "__main__":
     input_file = "Sprint #1 Data Gathering - Sheet2.csv"
 
